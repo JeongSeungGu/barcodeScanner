@@ -146,6 +146,7 @@
             resultView.style.zIndex = 100;
             resultView.style.touchAction = 'none';
         };
+
         // BAR/QR 코드 스캐너 불러오기
         window.addEventListener('load', function() {
             let selectedDeviceId;
@@ -154,7 +155,8 @@
                 .getVideoInputDevices()
                 .then(videoInputDevices => {
                     const sourceSelect = document.getElementById('sourceSelect');
-                    selectedDeviceId = videoInputDevices[0].deviceId;
+                    const videoSize = videoInputDevices.length-1;
+                    selectedDeviceId = videoInputDevices[videoSize].deviceId;
                     if (videoInputDevices.length >= 1) {
                         videoInputDevices.forEach(element => {
                             const sourceOption = document.createElement('option');
